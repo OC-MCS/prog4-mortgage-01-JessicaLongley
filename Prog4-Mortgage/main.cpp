@@ -5,6 +5,7 @@
 //Description: Mortgage Payment
 //=============================
 #include <iostream>
+#include <iomanip>
 #include "Mortgage.h"
 #include <string>
 using namespace std;
@@ -23,13 +24,13 @@ int main()
     m1.setRate(.012);
     m1.setYears(4);
 
-    cout << "The monthly payment of loan is: " << m1.getMonthlyPayment() << endl;
+    cout << "The monthly payment of loan is: " << fixed << setprecision(2) << m1.getMonthlyPayment() << endl;
     cout << "The period payment of loan is: " << m1.getPeriodPayment() << endl << endl;
 
     //demonstrate initializing the object member types all at once
     Mortgage m2(1000, .014, 5);
-    cout << "The monthly payment of loan is: " << m2.getMonthlyPayment() << endl;
-    cout << "The period payment of loan is: " << m2.getPeriodPayment() << endl << endl;
+    cout << "The monthly payment of loan is: $" << m2.getMonthlyPayment() << endl;
+    cout << "The period payment of loan is: $" << m2.getPeriodPayment() << endl << endl;
 
     //demonstrate initializing the object member types using standard input
     double loan, rate;
@@ -38,7 +39,7 @@ int main()
     cout << "Enter loan amount: " << endl;
     getline(cin, input);
     loan = validateLoanRate(input);
-    cout << "Enter rate: "<< endl;
+    cout << "Enter rate (percentage, not decimal): "<< endl;
     getline(cin, input);
     rate = validateLoanRate(input);
     cout << "Enter years: " << endl;
@@ -46,8 +47,8 @@ int main()
     years = validateYear(input);
     Mortgage m3(loan, rate, years);
 
-    cout << "The monthly payment of loan is: " << m3.getMonthlyPayment() << endl;
-    cout << "The period payment of loan is: " << m3.getPeriodPayment() << endl << endl;
+    cout << endl << "The monthly payment of loan is: $" << m3.getMonthlyPayment() << endl;
+    cout << "The period payment of loan is: $" << m3.getPeriodPayment() << endl << endl;
     return 0;
 }
 
