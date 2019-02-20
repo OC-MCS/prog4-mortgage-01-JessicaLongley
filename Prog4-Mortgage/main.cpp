@@ -35,17 +35,17 @@ int main()
     //demonstrate initializing the object member types using standard input
     double loan, rate;
     int years;
-    string input;
+    string input; //string input will hold each input for enough time to validate it
     cout << "Enter loan amount: " << endl;
     getline(cin, input);
-    loan = validateLoanRate(input);
+    loan = validateLoanRate(input); // valiadateLoanRate checks that the input is a number, specifically a positive one
     cout << "Enter rate (percentage, not decimal): "<< endl;
     getline(cin, input);
     rate = validateLoanRate(input);
     cout << "Enter years: " << endl;
     getline(cin, input);
     years = validateYear(input);
-    Mortgage m3(loan, rate, years);
+    Mortgage m3(loan, rate, years); //this line creates m3 with the user's input
 
     cout << endl << "The monthly payment of loan is: $" << m3.getMonthlyPayment() << endl;
     cout << "The period payment of loan is: $" << m3.getPeriodPayment() << endl << endl;
@@ -57,7 +57,7 @@ int main()
 //returns: bool( true if positive)
 double validateLoanRate(string input)
 {
-    double num; 
+    double num; //num will be filled with the number that was typed as input
 
     while (!parseDouble(input, num))
     {
@@ -81,7 +81,7 @@ double validateLoanRate(string input)
 //returns: bool( true if positive)
 int validateYear(string input)
 {
-    int num;
+    int num; //num will be filled with the number that was typed as input
     while (!parseInt(input, num))
     {
         cout << " Invalid input. Please enter a number: ";
@@ -104,12 +104,12 @@ int validateYear(string input)
 //returns: bool, true or false is the input is valid or not
 bool parseDouble(string input, double& fill)
 {
-    double num;
+    double num; 
     bool success = true;
     try
     {
         num = stod(input);   // changes string to double
-        fill = num;          // fills pass by refference float with the input
+        fill = num;          // fills pass-by-reference float with the input
     }
     catch (const std::exception&)
     {
@@ -128,7 +128,7 @@ bool parseInt(string input, int& fill)
     try
     {
         num = stoi(input);   // changes string to int
-        fill = num;          // fills pass by refference int with the input
+        fill = num;          // fills pass-by-reference int with the input
     }
     catch (const std::exception&)
     {
