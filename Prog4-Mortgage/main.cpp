@@ -10,6 +10,7 @@
 #include <string>
 using namespace std;
 
+
 //prototypes
 double validateLoanRate(string input);
 int validateYear(string input);
